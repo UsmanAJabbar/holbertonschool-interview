@@ -28,12 +28,10 @@ listint_t *insert_node(listint_t **head, int insert)
 	else
 	{
 		/* Finally, a decent linked list */
-		for (next = cur->next; next->next; cur = cur->next, next = next->next)
+		for (next = cur->next; next; cur = cur->next, next = next->next)
 			if (cur->n < insert && next->n > insert)
-			{
-				cur->next = new, new->next = next;
-				return (new);
-			}
+				break;
 	}
-	return (NULL);
+	cur->next = new, new->next = next;
+	return (new);
 }
