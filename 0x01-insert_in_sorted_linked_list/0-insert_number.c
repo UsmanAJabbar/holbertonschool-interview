@@ -7,7 +7,7 @@
  */
 listint_t *insert_node(listint_t **head, int insert)
 {
-	listint_t *new = NULL, *cur = *head, *next = NULL;
+	listint_t *new = NULL, *cur = (*head), *next = NULL;
 
 	/* NULL CHECK */
 	if (!head)
@@ -18,7 +18,7 @@ listint_t *insert_node(listint_t **head, int insert)
 
 	/* Finally, a decent linked list */
 	for (next = cur->next; next; cur = cur->next, next = next->next)
-		if (cur->n < insert && next->n > insert)
+		if (cur->n >= insert)
 			break;
 
 	cur->next = new, new->next = next;
