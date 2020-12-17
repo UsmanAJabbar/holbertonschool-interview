@@ -11,16 +11,6 @@ listint_t *insert_node(listint_t **head, int insert)
 {
 	listint_t *new = NULL, *cur = *head, *next = NULL;
 
-	// MASTER PLAN
-		// * The current plan's to actually use two pointers
-		//   to get through the linked list... One's going
-		//   to record the current node we're on and the
-		//   other's going to record the very next node
-		// * With every iteration, check if the inserted
-		//   number is bigger than the current, and if it
-		//   is, then check if the inserted number is
-		//   smaller than the next number, insert!
-
 	/* NULL CHECK */
 	if (!*head)
 		return (NULL);
