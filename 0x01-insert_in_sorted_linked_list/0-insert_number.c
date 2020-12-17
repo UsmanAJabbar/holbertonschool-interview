@@ -16,22 +16,11 @@ listint_t *insert_node(listint_t **head, int insert)
 	new = malloc(sizeof(listint_t));
 	new->n = insert;
 
-	/* If only one node exists */
-	if (!cur->next)
-	{
-		if (cur->n > insert)
-			new->next = cur, *head = new;
-		else
-			cur->next = new;
-		return(new);
-	}
-	else
-	{
-		/* Finally, a decent linked list */
-		for (next = cur->next; next; cur = cur->next, next = next->next)
-			if (cur->n < insert && next->n > insert)
-				break;
-	}
+	/* Finally, a decent linked list */
+	for (next = cur->next; next; cur = cur->next, next = next->next)
+		if (cur->n < insert && next->n > insert)
+			break;
+
 	cur->next = new, new->next = next;
 	return (new);
 }
