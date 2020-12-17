@@ -1,6 +1,4 @@
 #include "lists.h"
-#define pass (void)0
-
 /**
  * insert_node - inserts a new code
  * in a sorted singly linked list
@@ -12,7 +10,7 @@ listint_t *insert_node(listint_t **head, int insert)
 	listint_t *new = NULL, *cur = *head, *next = NULL;
 
 	/* NULL CHECK */
-	if (!*head)
+	if (!head)
 		return (NULL);
 
 	new = malloc(sizeof(listint_t));
@@ -27,14 +25,15 @@ listint_t *insert_node(listint_t **head, int insert)
 			cur->next = new;
 		return(new);
 	}
-			
-	/* Finally, a decent linked list */
-	for (next = cur->next; next->next; cur = cur->next, next = next->next)
-		if (cur->n < insert && next->n > insert)
-		{
-			cur->next = new, new->next = next;
-			return (new);
-		}
-
+	else
+	{
+		/* Finally, a decent linked list */
+		for (next = cur->next; next->next; cur = cur->next, next = next->next)
+			if (cur->n < insert && next->n > insert)
+			{
+				cur->next = new, new->next = next;
+				return (new);
+			}
+	}
 	return (NULL);
 }
