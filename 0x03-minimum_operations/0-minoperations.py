@@ -15,7 +15,7 @@ def minOperations(n):
         n: number of characters to generate
     """
     if n == 1:
-        return n
+        return 0
 
     for i in range(2, n):           # n = 45
         if n % i == 0:                  # i = 3
