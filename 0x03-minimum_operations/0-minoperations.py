@@ -17,7 +17,8 @@ def minOperations(n):
     if n <= 1:
         return 0
 
-    for i in range(2, n):           # n = 45
-        if n % i == 0:                  # i = 3
-            return minOperations(int(n / i)) + i
-    return n
+    for i in range(2, n):                         # n = 45   | n = 15
+        if n % i == 0:                            # i = 3    | i = 3
+            return minOperations(int(n / i)) + i  # (15) + 3 | (5) + 3
+
+    return n  # Hits this return if prime
