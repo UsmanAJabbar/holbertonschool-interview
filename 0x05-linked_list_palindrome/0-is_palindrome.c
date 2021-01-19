@@ -8,12 +8,14 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *s = *head, *d = *head;			/* s = single leap | d = double leap */
+	listint_t *s, *d;			/* s = single leap | d = double leap */
 	int i = 0, half_arr[4096];
 	
 	/* NULL CHECK */
 	if (!head || !(*head) || !s->next)
 		return(1);
+
+	s = *head, d = *head;
 
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
