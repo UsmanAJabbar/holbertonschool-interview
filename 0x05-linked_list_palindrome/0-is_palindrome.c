@@ -40,7 +40,6 @@ int is_palindrome(listint_t **head)
 	{
 		if (s->n != half_arr[i])
 		{
-			free(half_arr);
 			return(0);
 		}
 
@@ -48,7 +47,6 @@ int is_palindrome(listint_t **head)
 		i--;
 	}
 
-	free(half_arr);
 	return (1);
 }
 
