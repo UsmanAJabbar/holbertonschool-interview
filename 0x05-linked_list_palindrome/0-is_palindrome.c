@@ -9,7 +9,7 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *s = *head, *d = *head;			/* s = single leap | d = double leap */
-	int i = 0, *half_arr = malloc(sizeof(int));
+	int i = 0, half_arr[4096];
 	
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
@@ -18,7 +18,6 @@ int is_palindrome(listint_t **head)
 	{
 		half_arr[i] = s->n;										/* Add each element s goes through */
 		i++;													/* Increment so that realloc could use the i */
-		half_arr = realloc(half_arr, sizeof(int) * (i + 1));	/* Add an extra block of memory for the next loop */
 
 		s = s->next;
 		d = d->next->next;
@@ -39,15 +38,11 @@ int is_palindrome(listint_t **head)
 	while (s)
 	{
 		if (s->n != half_arr[i])
-		{
-			free(half_arr);
 			return(0);
-		}
 
 		s = s->next;
 		i--;
 	}
-	free(half_arr);
 	return (1);
 }
 
