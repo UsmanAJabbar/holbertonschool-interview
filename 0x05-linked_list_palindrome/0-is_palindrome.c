@@ -3,12 +3,8 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *s = *head, *d = *head;			/* s = single leap | d = double leap */
-	int i = 0, *half_arr = malloc(sizeof(int));	/* Use this to dyanmically add items to array */
-
-	/* NULL CHECKS */
-	if (!head || !(*head) || !half_arr)
-		return(0);
-
+	int i = 0, *half_arr = malloc(sizeof(int));
+	
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
 	/* be pointing to the middle list */
