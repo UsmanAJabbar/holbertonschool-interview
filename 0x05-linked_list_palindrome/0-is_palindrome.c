@@ -11,6 +11,10 @@ int is_palindrome(listint_t **head)
 	listint_t *s = *head, *d = *head;			/* s = single leap | d = double leap */
 	int i = 0, half_arr[4096];
 	
+	/* NULL CHECK */
+	if (!head || !(*head) || !s->next)
+		return(0);
+
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
 	/* be pointing to the middle list */
