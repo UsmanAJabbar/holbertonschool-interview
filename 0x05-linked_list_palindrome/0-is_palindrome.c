@@ -10,9 +10,9 @@ int is_palindrome(listint_t **head)
 	/* be pointing to the middle list */
 	while (d->next && d->next->next)
 	{
-		half_arr[i] = s->n;						/* Add each element s goes through */
-		i++;									/* Increment so that realloc could use the i */
-		half_arr = realloc(half_arr, i + 1);	/* Add an extra block of memory for the next loop */
+		half_arr[i] = s->n;										/* Add each element s goes through */
+		i++;													/* Increment so that realloc could use the i */
+		half_arr = realloc(half_arr, sizeof(int) * (i + 1));	/* Add an extra block of memory for the next loop */
 
 		s = s->next;
 		d = d->next->next;
@@ -33,7 +33,10 @@ int is_palindrome(listint_t **head)
 	while (s)
 	{
 		if (s->n != half_arr[i])
+		{
+			free(half_arr);
 			return(0);
+		}
 
 		s = s->next;
 		i--;
@@ -42,3 +45,4 @@ int is_palindrome(listint_t **head)
 	free(half_arr);
 	return (1);
 }
+
