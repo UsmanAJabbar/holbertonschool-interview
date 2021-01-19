@@ -1,9 +1,15 @@
 #include "lists.h"
 
+/**
+ * is_palindrome - returns whether a list is
+ * palindrome
+ * @head: head of the ll
+ * Return: 0 or 1
+ */
 int is_palindrome(listint_t **head)
 {
 	listint_t *s = *head, *d = *head;			/* s = single leap | d = double leap */
-	int i = 0, *half_arr = malloc(sizeof(int));
+	int i = 0, half_arr[4096];
 	
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
@@ -12,7 +18,7 @@ int is_palindrome(listint_t **head)
 	{
 		half_arr[i] = s->n;										/* Add each element s goes through */
 		i++;													/* Increment so that realloc could use the i */
-		half_arr = realloc(half_arr, sizeof(int) * (i + 1));	/* Add an extra block of memory for the next loop */
+		/* half_arr = realloc(half_arr, sizeof(int) * (i + 1));	 Add an extra block of memory for the next loop */
 
 		s = s->next;
 		d = d->next->next;
