@@ -13,7 +13,7 @@ int is_palindrome(listint_t **head)
 	
 	/* NULL CHECK */
 	if (!head || !(*head) || !s->next)
-		return(0);
+		return(1);
 
 	/* This loop searches for the mid */
 	/* By the end of the loop, s should */
