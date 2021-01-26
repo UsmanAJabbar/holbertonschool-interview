@@ -50,10 +50,15 @@ def status():
 
 # Main
 try:
-    for line in stdin.readlines():
+    for line in stdin:
         log_parser(line.rstrip())
         if line_count % 10 == 0:
             status()
+
+    # Ensure that if we have 11 elements,
+    # the extra element gets a final print out.
+    if line_count % 10 > 0:
+        status()
 
 except KeyboardInterrupt as e:
     status()
