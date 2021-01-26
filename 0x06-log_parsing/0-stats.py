@@ -35,9 +35,6 @@ def log_parser(log_line: str):
     if status_code in status_codes.keys():
         status_codes[status_code] += 1
 
-    if line_count % 10 == 0:
-        status()
-
 def status():
     """
     --------------
@@ -55,10 +52,8 @@ def status():
 try:
     for line in stdin.readlines():
         log_parser(line.rstrip())
-
-    # Avoid double printing if status was called in log_parser
-    if line_count % 10 != 0:
-        status()
+        if line_count % 10 == 0:
+            status()
 
 except KeyboardInterrupt as e:
     status()
