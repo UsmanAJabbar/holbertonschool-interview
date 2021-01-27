@@ -7,6 +7,7 @@ status_codes = {'200': 0, '301': 0,
 file_size = 0
 line_count = 0
 
+
 def log_parser(log_line: str):
     """
     ------------------
@@ -15,7 +16,7 @@ def log_parser(log_line: str):
     Description:
         The log parser function takes counts valid
         status codes present in a log file.
-        
+
         Each and every line is expected to follow this format
         <IP Add> - [<date>] "GET /path HTTP/1.1" <status code> <file size>
     Args:
@@ -25,7 +26,7 @@ def log_parser(log_line: str):
         None
     """
     global line_count, file_size
-    
+
     # Update Global Variables
     line_count += 1
     file_size += int(log_line.split()[-1])
@@ -34,6 +35,7 @@ def log_parser(log_line: str):
     status_code = log_line.split()[-2]
     if status_code in status_codes.keys():
         status_codes[status_code] += 1
+
 
 def status():
     """
