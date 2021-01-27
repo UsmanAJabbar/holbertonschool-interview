@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-from sys import stdin
+from sys import stdin, stdout
+import traceback
 
 status_codes = {'200': 0, '301': 0,
                 '400': 0, '401': 0, '403': 0, '404': 0, '405': 0,
@@ -50,6 +51,7 @@ def status():
     for key, value in sorted(status_codes.items()):
         print('{}: {}'.format(key, value))
 
+
 # Main
 try:
     for line in stdin:
@@ -63,7 +65,7 @@ try:
         status()
 
 except KeyboardInterrupt as e:
-    status()
+    traceback.print_exc(file=stdout)
 
 except BrokenPipeError:
     pass
