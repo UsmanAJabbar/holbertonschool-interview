@@ -49,7 +49,8 @@ def status():
     """
     print('File size: ' + str(file_size))
     for key, value in sorted(status_codes.items()):
-        print('{}: {}'.format(key, value))
+        if value != 0:
+            print('{}: {}'.format(key, value))
 
 
 # Main
