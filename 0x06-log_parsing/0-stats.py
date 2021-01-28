@@ -67,7 +67,8 @@ try:
         status()
 
 except KeyboardInterrupt as e:
-    traceback.print_exc(file=stdout)
+    status()
+    raise
 
 except BrokenPipeError:
     pass
