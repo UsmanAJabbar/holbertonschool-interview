@@ -60,12 +60,8 @@ void shift(int *arr, int size, int direction)
 
     if(direction == SLIDE_LEFT)
         for(i = 0; i < size; i++)
-        {
-            if(non_zeros[i])
-                arr[i] = non_zeros[i];
-            else
-                arr[i] = 0;
-        }
+            arr[i] = (non_zeros[i]) ? non_zeros[i] : 0;
+
     if(direction == SLIDE_RIGHT)
     {
         len_nums = j;
