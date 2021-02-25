@@ -75,7 +75,7 @@ void shift(int *arr, int size, int direction)
         for(i = 0; i < len_zeros; i++)
             arr[i] = 0;
         /* Copy the number of non zeros */
-        for(i = len_zeros, j = 0; i < size && j < len_nums; i++, j++)
-            arr[i] = non_zeros[j];
+        for(i = len_zeros; i < size; i++, j++)
+            arr[i] = non_zeros[i - len_zeros];
     }
 }
