@@ -24,7 +24,7 @@ int slide_line(int *line, size_t size, int direction)
         }
         if(line[i] != 0 && index_found != 9999)
         {
-            /* 2 0 0 4 0 2 */
+            /* 2 0 0 4 0 2 2 */
             if(line[i] != line[index_found]) {
                 index_found = i;
                 continue;
@@ -39,10 +39,18 @@ int slide_line(int *line, size_t size, int direction)
     shift(line, int_size, direction);
     return(1);
 }
+
+/**
+ * shift - shifts the array left/right
+ * @arr: array
+ * @size: len(array)
+ * @direction: left/right
+ * Return: None
+ */
 void shift(int *arr, int size, int direction)
 {
-    int i, j;                       /* i for the for loop */
-    int zero_index = 9999;          /* This would record where the 0 was found */
+    int i, j;                               /* i for the for loop */
+    int zero_index = 9999;                  /* This would record where the 0 was found */
     int non_zeros[4096];
 
     for(i = 0, j = 0; i < size; i++)
