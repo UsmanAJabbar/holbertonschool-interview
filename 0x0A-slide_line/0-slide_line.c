@@ -50,8 +50,9 @@ int slide_line(int *line, size_t size, int direction)
 void shift(int *arr, int size, int direction)
 {
     int i, j;                               /* i for the for loop */
-    int zero_index = 9999;                  /* This would record where the 0 was found */
     int non_zeros[4096];
+    int len_zeros, len_nums;
+
 
     for(i = 0, j = 0; i < size; i++)
         if(arr[i] != 0)
@@ -66,11 +67,15 @@ void shift(int *arr, int size, int direction)
                 arr[i] = 0;
         }
     if(direction == SLIDE_RIGHT)
-        for(i = size - 1, j = 0; i >= 0; i--, j++)
-        {
-            if(non_zeros[j])
-                arr[i] = non_zeros[j];
-            else
-                arr[i] = 0;
-        }
+    {
+        len_nums = j;
+        len_zeros = size - len_nums;
+
+        /* Copy number of zeros */
+        for(i = 0; i < len_zeros; i++)
+            arr[i] = 0;
+        /* Copy the number of non zeros */
+        for(i = len_zeros, j = 0; i < size && j < len_nums; i++, j++)
+            arr[i] = non_zeros[j];
+    }
 }
