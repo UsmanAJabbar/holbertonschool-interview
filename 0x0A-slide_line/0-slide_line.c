@@ -16,6 +16,30 @@ int slide_line(int *line, size_t size, int direction)
     if (!line || size < 2)
         return(0);
 
+    if (direction != SLIDE_RIGHT && direction != SLIDE_LEFT)
+        return(0);
+
+    /**
+     * PLAN: Look for a number and record where you found it
+     * at, then continue through the for loop and ensure you
+     * don't hit the first for loop again
+     * 
+     * In the second if statement, if we found a number and it
+     * isn't the same number we recorded earlier, discard the
+     * old number and record the new index and number.
+     * 
+     * If the same number was found, add them together at the
+     * left index where the matching number was found
+     * 
+     * Then, at the old index reset that index to 0 since we've
+     * used it to add it at the initial index location.
+     * 
+     * By the end of the for loop, we've done all of our
+     * additions, simple to cleanup.
+     * 
+     * Complete the whole loop and then call on the helper
+     * function to shift the array left or right
+     */
     for(i = 0; i < int_size; i++)
     {
         if(line[i] != 0 && index_found == 9999) {
@@ -24,7 +48,6 @@ int slide_line(int *line, size_t size, int direction)
         }
         if(line[i] != 0 && index_found != 9999)
         {
-            /* 2 0 0 4 0 2 2 */
             if(line[i] != line[index_found]) {
                 index_found = i;
                 continue;
@@ -70,6 +93,7 @@ void shift(int *arr, int size, int direction)
         /* Copy number of zeros */
         for(i = 0; i < len_zeros; i++)
             arr[i] = 0;
+
         /* Copy the number of non zeros */
         for(i = len_zeros; i < size; i++, j++)
             arr[i] = non_zeros[i - len_zeros];
