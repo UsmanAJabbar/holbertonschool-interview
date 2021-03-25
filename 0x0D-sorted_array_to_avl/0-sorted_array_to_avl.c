@@ -1,5 +1,12 @@
 #include "binary_trees.h"
 
+/**
+ * create_node - creates a new node to to be added
+ * to an AVL tree
+ * @parent:
+ * @value:
+ * Return: node
+ */
 avl_t *create_node(int value, avl_t *parent)
 {
 	avl_t *node = malloc(sizeof(avl_t));
@@ -15,6 +22,12 @@ avl_t *create_node(int value, avl_t *parent)
 	return (node);
 }
 
+/**
+ * sorted_array_to_avl - array to AVL
+ * @array:
+ * @size:
+ * Return: AVL
+ */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
 	avl_t *sorted_avl;
@@ -26,7 +39,15 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 
 	return (sorted_avl);
 }
-
+/**
+ * sorted_array_to_avl_helper - sorted array
+ * to avl helper
+ * @array:
+ * @start:
+ * @end:
+ * @parent:
+ * Return: AVL tree
+ */
 avl_t *sorted_array_to_avl_helper(int *array, size_t start, size_t end, avl_t *parent)
 {
 	size_t mid;
