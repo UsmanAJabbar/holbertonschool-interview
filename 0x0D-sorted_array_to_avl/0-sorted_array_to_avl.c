@@ -3,8 +3,8 @@
 /**
  * create_node - creates a new node to to be added
  * to an AVL tree
- * @parent:
- * @value:
+ * @parent: parent node
+ * @value: value
  * Return: node
  */
 avl_t *create_node(int value, avl_t *parent)
@@ -24,8 +24,8 @@ avl_t *create_node(int value, avl_t *parent)
 
 /**
  * sorted_array_to_avl - array to AVL
- * @array:
- * @size:
+ * @array: array
+ * @size: size
  * Return: AVL
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
@@ -42,10 +42,10 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 /**
  * sorted_array_to_avl_helper - sorted array
  * to avl helper
- * @array:
- * @start:
- * @end:
- * @parent:
+ * @array: array
+ * @start: start
+ * @end: end
+ * @parent: parent node
  * Return: AVL tree
  */
 avl_t *sorted_array_to_avl_helper(int *array, size_t start, size_t end, avl_t *parent)
