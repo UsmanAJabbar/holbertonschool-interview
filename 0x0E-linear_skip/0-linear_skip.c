@@ -17,6 +17,13 @@ skiplist_t *linear_skip(skiplist_t *head, int value) {
 	return linear_skip_helper(head, value, flag);
 }
 
+/**
+ * linear_skip_helper - function helper that has an additional para
+ * @list: list
+ * @target: target
+ * @flag: flag to denote whether printf string has been printed
+ * Return: Node || NULL
+ */
 skiplist_t *linear_skip_helper(skiplist_t *list, int target, int flag)
 {
 	if (!list || list->n > target)
