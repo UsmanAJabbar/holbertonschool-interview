@@ -14,25 +14,25 @@ skiplist_t *linear_skip(skiplist_t *head, int value) {
 	if (!head)
 		return (NULL);
 
-	return linear_skip_helper(head, value, head->index, head->n, flag);
+	return linear_skip_helper(head, value, flag);
 }
 
-skiplist_t *linear_skip_helper(skiplist_t *list, int target, size_t index, int value, int flag)
+skiplist_t *linear_skip_helper(skiplist_t *list, int target, int flag)
 {
 	if (!list || list->n > target)
 		return (NULL);
 	if (list->n == target)
 		return (list);
 
-	printf("Value checked at index [%zu] = [%d]\n", index, value);
+	printf("Value checked at index [%d] = [%d]\n", (int)list->index, list->n);
 
 	if (list->express && target >= list->express->n)
-		return linear_skip_helper(list->express, target, list->express->index, list->express->n, flag);
+		return linear_skip_helper(list->express, target, flag);
 
 	if (!flag && list->express)
 	{
-		printf("Value found between indexes [%zu] and [%zu]\n", list->index, list->express->index);
+		printf("Value found between indexes [%d] and [%d]\n", (int)list->index, (int)list->express->index);
 		flag = 1;
 	}
-	return linear_skip_helper(list->next, target, list->next->index, list->next->n, flag);
+	return linear_skip_helper(list->next, target, flag);
 }
