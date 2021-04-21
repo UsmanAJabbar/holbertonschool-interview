@@ -1,20 +1,21 @@
 #!/usr/bin/node
 // Returns the cast from the Star Wars movie
 const request = require('request');
-
-const end = 'https://swapi-api.hbtn.io/api/films/';
 const filmNo = process.argv[2];
 
-request(`${end + filmNo}`, (error, response, body) => {
+const character_print = (character_api_urls, index) => {
+  if (character_api_urls[index]) {
+    request.get(character_api_urls[index], (error, response, body) => {
+      const character_name = JSON.parse(body).name;
+      console.log(character_name);
+      character_print(character_api_urls, index + 1);
+    })
+  }
+}
+
+request.get(`https://swapi-api.hbtn.io/api/films/${filmNo}`, (error, response, body) => {
   if (!error && response.statusCode === 200) {
-    const data = JSON.parse(body);
-    for (const characterEndpoint of data.characters) {
-      request(characterEndpoint, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-          const character = JSON.parse(body);
-          console.log(character.name);
-        }
-      });
-    }
+    const data = JSON.parse(body).characters;
+    character_print(data, 0);
   }
 });
