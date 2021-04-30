@@ -35,7 +35,7 @@ int helper(int *array, int size, int target, int start, int end)
 	if (start > end || !array)
 		return(-1);
 
-	array_status(array, size, start, end);
+	array_status(array, start, end);
 
 	mid = (start + end) / 2;
 
