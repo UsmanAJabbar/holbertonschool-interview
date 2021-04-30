@@ -62,7 +62,7 @@ int helper(int *array, int size, int target, int start, int end)
   * @end: end index
   * Return: Void
   */
-void array_status(int *array, int size, int start, int end)
+void array_status(int *array, int start, int end)
 {
 	printf("Searching in array: ");
 	for (; start < end; start++)
