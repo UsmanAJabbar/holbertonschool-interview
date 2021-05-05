@@ -7,9 +7,12 @@ from collections import Counter
 def count_words(sub, word_list=[], next='', word_sum={}) -> None:
     """Counts the number of words"""
     print(word_sum)
-    if not word_sum:
-        word_list = set([word.lower() for word in word_list])
-    if next is 'None': return print(word_sum)
+
+    # Converts it to a set on the very first run
+    if not word_sum:   word_list = set([word.lower() for word in word_list])
+
+    # This executes when there are no more pages
+    if next == 'None': return print(word_sum)
 
     api = r_get(f'https://api.reddit.com/r/{sub}/hot?after={next}',
                 headers={'User-Agent': 'Chrome'},
@@ -22,9 +25,12 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
         if not post['data']['stickied']:
             title = post['data']['title'].lower().split()
             w_count = Counter(title)
-            for word in word_list:
-                if word in word_sum: word_sum[word] += w_count.get(word, 0)
-                else:                word_sum[word]  = w_count.get(word, 0)
+
+            for keyword in word_list:
+                if keyword in word_sum:
+                    word_sum[keyword] += w_count.get(keyword, 0)
+                else:
+                    word_sum[keyword]  = w_count.get(keyword, 0)
 
     next = api.get('data', {}).get('after', 'None')
     count_words(sub, word_list, next, word_sum)
