@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Counts the occurrence of keywords in a reddit API query"""
-from requests import get as r_get
 from collections import Counter
+from requests import get
 
 
 def count_words(sub, word_list=[], next='', word_sum={}) -> None:
@@ -10,7 +10,7 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
     if not word_sum:
         word_list = set([word.lower() for word in word_list])
 
-    api = r_get(f'https://api.reddit.com/r/{sub}/hot?after={next}',
+    api = get(f'https://api.reddit.com/r/{sub}/hot?after={next}',
                 headers={'User-Agent': 'Chrome'},
                 allow_redirects=False).json()
     posts = api.get('data', {}).get('children')
@@ -38,5 +38,5 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
 
 def print_helper(word_count: dict) -> None:
     """Results should be printed in descending order, by the count"""
-    for elements in sorted(word_count.items(), key=lambda x: x[1]):
+    for elements in sorted(word_count.items(), key=lambda x: x[1], reverse=True):
         print(f'{elements[0]}: {elements[1]}')
