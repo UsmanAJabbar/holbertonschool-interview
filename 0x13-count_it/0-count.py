@@ -39,5 +39,6 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
 
 def print_helper(word_count: dict) -> None:
     """Results should be printed in descending order, by the count"""
-    for elements in sorted(word_count.items(), key=lambda x: x[1], reverse=True):
+    for elements in sorted(word_count.items(),
+                           key=lambda x: x[1], reverse=True):
         print(f'{elements[0]}: {elements[1]}')
