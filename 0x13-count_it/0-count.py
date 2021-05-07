@@ -11,8 +11,8 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
         word_list = set([word.lower() for word in word_list])
 
     api = get(f'https://api.reddit.com/r/{sub}/hot?after={next}',
-                headers={'User-Agent': 'Chrome'},
-                allow_redirects=False).json()
+              headers={'User-Agent': 'Chrome'},
+              allow_redirects=False).json()
     posts = api.get('data', {}).get('children')
 
     if not posts:
@@ -27,7 +27,7 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
                 if keyword in word_sum:
                     word_sum[keyword] += w_count.get(keyword, 0)
                 else:
-                    word_sum[keyword]  = w_count.get(keyword, 0)
+                    word_sum[keyword] = w_count.get(keyword, 0)
 
     next = api.get('data', {}).get('after', 'exit')
     # This executes when there are no more pages or if data doesn't exist
@@ -35,6 +35,7 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
         return print_helper(word_sum)
 
     return count_words(sub, word_list, next, word_sum)
+
 
 def print_helper(word_count: dict) -> None:
     """Results should be printed in descending order, by the count"""
