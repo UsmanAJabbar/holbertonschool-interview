@@ -5,7 +5,7 @@ from requests import get
 
 
 def count_words(sub, word_list=[], next='', word_sum={}):
-    """Counts the number of words"""
+    """|||||| Counts the number of words |||||||"""
     # Converts it to a set on the very first run
     if not word_sum:
         word_list = set([word.lower() for word in word_list])
