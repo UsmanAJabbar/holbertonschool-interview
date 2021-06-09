@@ -4,7 +4,7 @@ from collections import Counter
 from requests import get
 
 
-def count_words(sub, word_list=[], next='', word_sum={}) -> None:
+def count_words(sub, word_list=[], next='', word_sum={}):
     """Counts the number of words"""
     # Converts it to a set on the very first run
     if not word_sum:
@@ -37,7 +37,7 @@ def count_words(sub, word_list=[], next='', word_sum={}) -> None:
     return count_words(sub, word_list, next, word_sum)
 
 
-def print_helper(word_count: dict) -> None:
+def print_helper(word_count):
     """Results should be printed in descending order, by the count"""
     for elements in sorted(word_count.items(),
                            key=lambda x: x[1], reverse=True):
