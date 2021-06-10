@@ -37,14 +37,16 @@ int helper(int *array, int size, int target, int start, int end)
 
 	array_status(array, start, end);
 
-	mid = (start + end) / 2;
+	if (start == end)
+		return array[start] == target ? start : -1;
 
-	if (array[mid] == target)
-		return first_occ(array, mid, target);
-	else if (target > array[mid])
-		return helper(array, size, target, mid + 1, end);
-	else
-		return helper(array, size, target, start, mid - 1);
+	mid = ((start + end + 1) % 2 == 1) + (start + end + 1) / 2;
+
+	if (array[start] == target)
+		return start;
+	if (target >= array[mid])
+		return helper(array, size, target, mid, end);
+	return helper(array, size, target, start, mid - 1);
 }
 
 /**
@@ -53,12 +55,12 @@ int helper(int *array, int size, int target, int start, int end)
   * @index: index
   * Return: index
   */
-int first_occ(int *array, int index, int target)
+/** int first_occ(int *array, int index, int target)
 {
 	if (index > 0 && array[index - 1] == target)
 		index = first_occ(array, index - 1, target);
 	return index;
-}
+} */
 
 /**
   * array_status - prints out the necessary
