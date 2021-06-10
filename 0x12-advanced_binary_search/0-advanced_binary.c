@@ -14,7 +14,7 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int len = (int)size;
 
-	return helper(array, len, value, 0, len);
+	return helper(array, len, value, 0, len - 1);
 }
 
 /**
