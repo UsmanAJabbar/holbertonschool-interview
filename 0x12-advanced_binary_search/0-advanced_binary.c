@@ -40,16 +40,24 @@ int helper(int *array, int size, int target, int start, int end)
 	mid = (start + end) / 2;
 
 	if (array[mid] == target)
-	{
-		while (mid > 0 && array[mid - 1] == target)
-			mid -= 1;
-		return(mid);
-	}
-
+		return first_occ(array, mid, target);
 	else if (target > array[mid])
 		return helper(array, size, target, mid + 1, end);
 	else
 		return helper(array, size, target, start, mid - 1);
+}
+
+/**
+  * first_occ - returns the first occurrence index
+  * @array: array
+  * @index: index
+  * Return: index
+  */
+int first_occ(int *array, int index, int target)
+{
+	if (index > 0 && array[index - 1] == target)
+		index = first_occ(array, index - 1, target);
+	return index;
 }
 
 /**

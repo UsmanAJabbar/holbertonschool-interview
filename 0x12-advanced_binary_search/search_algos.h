@@ -7,5 +7,6 @@
 int advanced_binary(int *array, size_t size, int value);
 int helper(int *array, int size, int target, int start, int end);
 void array_status(int *array, int start, int end);
+int first_occ(int *array, int index, int target);
 
 #endif
