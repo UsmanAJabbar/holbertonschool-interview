@@ -14,7 +14,7 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	int len = (int)size;
 
-	return helper(array, len, value, 0, len - 1);
+	return (helper(array, len, value, 0, len - 1));
 }
 
 /**
@@ -33,41 +33,27 @@ int helper(int *array, int size, int target, int start, int end)
 	int mid;
 
 	if (start > end || !array)
-		return(-1);
+		return (-1);
 
 	array_status(array, start, end);
 
 	if (start == end)
-		return array[start] == target ? start : -1;
+		return (array[start] == target ? start : -1);
 
 	mid = ((start + end + 1) % 2 == 1) + (start + end + 1) / 2;
 
 	if (array[start] == target)
-		return start;
+		return (start);
 	if (target >= array[mid])
-		return helper(array, size, target, mid, end);
-	return helper(array, size, target, start, mid - 1);
+		return (helper(array, size, target, mid, end));
+	return (helper(array, size, target, start, mid - 1));
 }
-
-/**
-  * first_occ - returns the first occurrence index
-  * @array: array
-  * @index: index
-  * Return: index
-  */
-/** int first_occ(int *array, int index, int target)
-{
-	if (index > 0 && array[index - 1] == target)
-		index = first_occ(array, index - 1, target);
-	return index;
-} */
 
 /**
   * array_status - prints out the necessary
   * print statement to showcase the status
   * of the array as we search for the element
   * @array: array
-  * @size: len of array
   * @start: start index
   * @end: end index
   * Return: Void
@@ -78,5 +64,4 @@ void array_status(int *array, int start, int end)
 	for (; start < end; start++)
 		printf("%d, ", array[start]);
 	printf("%d\n", array[start]);
-	return;
 }
