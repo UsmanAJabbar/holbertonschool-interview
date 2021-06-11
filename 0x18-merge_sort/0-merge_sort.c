@@ -25,7 +25,8 @@ void split(int *array, int start, int end)
 {
 	int mid;
 
-	if (start < end) {
+	if (start < end)
+	{
 		mid  = (start + end) / 2;
 		split(array, start, mid);
 		split(array, mid + 1, end);
@@ -47,5 +48,4 @@ void merge(int *array, int start, int mid, int end)
 	array[start] = 0;
 	array[mid] = 0;
 	array[end] = 0;
-	return;
 }
