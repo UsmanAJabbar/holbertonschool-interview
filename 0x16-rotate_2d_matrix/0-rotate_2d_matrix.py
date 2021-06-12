@@ -7,5 +7,5 @@ def rotate_2d_matrix(matrix):
     size = len(matrix)
 
     for column in range(size):
-        matrix[column] = [matrix[row][column]
-                          for row in range(size - 1, -1, -1)]
+        matrix[column] = [ matrix[row][column]
+                           for row in range(size - 1, -1, -1) ]
