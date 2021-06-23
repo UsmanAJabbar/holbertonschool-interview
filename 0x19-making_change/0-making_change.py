@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Some doc"""
 
+
 def makeChange(coins: list, total: int) -> int:
     """
     ------------------
