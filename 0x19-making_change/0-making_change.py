@@ -23,6 +23,5 @@ def makeChange(coins: list, total: int) -> int:
         while total_from_coins + coin <= total:
             total_from_coins += coin
             number_of_coins += 1
-            print(total_from_coins)
 
     return -1 if total_from_coins != total else number_of_coins
