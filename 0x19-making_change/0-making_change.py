@@ -38,7 +38,7 @@ def makeChange(coins: list, amount: int) -> int:
     for current_amount in range(amount + 1): # Loop from 0 to amount
         for coin in coins:                   # Find coins that could feasibly be generate the current_amount
             if coin <= current_amount:       # We can only generate an amount if the coin is smaller than the amount
-                cache[current_amount] = min(cache[current_amount], cache[current_amount - coin])
+                cache[current_amount] = min(cache[current_amount], cache[current_amount - coin] + 1)
                                              # Compare the current_amount with the amount if we have previously seen it
                                              # eg, current_amount = 25, coin = 5
                                              # check if the cache[25] smaller number of coins or cache[20]
