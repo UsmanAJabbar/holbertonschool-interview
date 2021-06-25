@@ -14,14 +14,14 @@ def makeChange(coins: list, total: int) -> int:
         @coins: list of coin options
         @total: total to generate
     """
-    coins.sort(reverse=True)
+    if amount == 0:
+        return 0
 
-    total_from_coins = 0
-    number_of_coins = 0
+    dp = [amount+1] * (amount+1) 
+    dp[0] = 0
 
-    for coin in coins:
-        while total_from_coins + coin <= total:
-            total_from_coins += coin
-            number_of_coins += 1
+    for i in range(len(coins)):
+        for j in range(coins[i], amount + 1):  
+            dp[j] = min(dp[j], dp[j - coins[i]] + 1)
 
-    return -1 if total_from_coins != total else number_of_coins
+    return -1 if dp[-1] > amount else dp[-1]
