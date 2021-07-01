@@ -8,13 +8,14 @@
 List *create_List_node(char *str)
 {
 	List *node = malloc(sizeof(List));
+	char *duped_str = strdup(str);
 
 	/* Check input, malloc, strdup */
-	if (!str || !node)
+	if (!str || !node || !duped_str)
 		return (NULL);
 
 	node->next = node->prev = NULL;
-	node->str = strdup(str);
+	node->str = duped_str;
 
 	return (node);
 }
