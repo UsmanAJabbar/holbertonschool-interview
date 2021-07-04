@@ -3,6 +3,7 @@
 /**
  * max_num - Returns the max/max in an array
  * @array: int array as input
+ * @len: len
  * Return: Max number || 0
  */
 int max_num(int *array, int len)
@@ -14,7 +15,7 @@ int max_num(int *array, int len)
 		return (INT_MIN);
 
 	for (index = 0; index < len; index++)
-		max = (array[index] > max) ? array[index]: max;
+		max = (array[index] > max) ? array[index] : max;
 
 	return (max);
 }
@@ -25,11 +26,20 @@ int max_num(int *array, int len)
  * @exponent: exp
  * Return: int
  */
-int num_at_pos(int num, int exponent) {
+int num_at_pos(int num, int exponent)
+{
 	return ((num / exponent) % 10);
 }
 
-void digit_counting_sort(int *array, int exponent, int len) {
+/**
+ * digit_counting_sort - the main func
+ * @array: array
+ * @exponent: exp
+ * @len: len
+ * Return: None
+ */
+void digit_counting_sort(int *array, int exponent, int len)
+{
 	int i;
 	int digit;
 	int digit_freq[10] = { 0 };
@@ -58,7 +68,7 @@ void digit_counting_sort(int *array, int exponent, int len) {
 	print_array(array, (size_t)len);
 }
 /**
- * radix_sort - applies the radix sort 
+ * radix_sort - applies the radix sort
  * algorithm to an array of integers
  * @array: input array with integers exclusively
  * @size: size of the input array
