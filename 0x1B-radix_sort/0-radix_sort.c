@@ -66,6 +66,8 @@ void digit_counting_sort(int *array, int exponent, int len)
 		array[i] = temp[i];
 
 	print_array(array, (size_t)len);
+
+	free(temp);
 }
 /**
  * radix_sort - applies the radix sort
