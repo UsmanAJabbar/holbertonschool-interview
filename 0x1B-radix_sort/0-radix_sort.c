@@ -8,7 +8,7 @@
  */
 int max_num(int *array, int len)
 {
-	int max = INT_MAX;
+	int max = INT_MIN;
 	int index;
 
 	if (!array)
