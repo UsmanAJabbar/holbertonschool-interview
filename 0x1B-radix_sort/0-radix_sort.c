@@ -8,7 +8,7 @@
  */
 int max_num(int *array, int len)
 {
-	int max;
+	int max = INT_MAX;
 	int index;
 
 	if (!array)
@@ -81,6 +81,9 @@ void radix_sort(int *array, size_t size)
 {
 	int max = max_num(array, (int)size);
 	int exp = 1;
+
+	if (size < 2)
+		return;
 
 	for (; max / exp > 0; exp *= 10)
 		digit_counting_sort(array, exp, (int)size);
