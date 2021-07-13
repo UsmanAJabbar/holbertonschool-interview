@@ -17,7 +17,7 @@ def island_perimeter(grid):
     if not grid or not grid[0]:
         return 0
 
-    land, water = 1, 0
+    land = 1
     perimeter = 0
 
     for y in range(len(grid)):
@@ -31,4 +31,3 @@ def island_perimeter(grid):
                     perimeter -= 2
 
     return perimeter
-
