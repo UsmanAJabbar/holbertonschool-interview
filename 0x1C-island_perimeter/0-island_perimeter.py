@@ -11,8 +11,10 @@ def island_perimeter(grid):
         Returns the perimeter of an island represented
         as a grid matrix with 1s representing lands
         and 0s representing water.
+    Args:
+        @grid: 2D grid matrix representation of a map
     Return:
-        @grid: 2D grid matrix
+        Perimeter of the island if any
     """
     if not grid or not grid[0]:
         return 0
