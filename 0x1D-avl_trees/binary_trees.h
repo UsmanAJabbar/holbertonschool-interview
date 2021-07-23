@@ -1,7 +1,7 @@
 #ifndef _BINARY_TREES_H
 #define _BINARY_TREES_H
 
-#define MAX(l_height, r_height) (l_height >= r_height ? l_height : r_height)
+#define MAX(l_height, r_height) (l_height > r_height ? l_height : r_height)
 
 #include <stdlib.h>
 #include <limits.h>
