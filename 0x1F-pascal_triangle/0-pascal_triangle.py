@@ -11,11 +11,10 @@ def pascal_triangle(n):
         Returns a pascal representation
         a triangle with n rows.
     """
-    pascal = []
     if n <= 0:
-        return pascal
+        return []
 
-    pascal += [[1]]
+    pascal = [[1]]
 
     while n > 1:
         curr_row = [1]
