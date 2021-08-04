@@ -17,13 +17,13 @@ def pascal_triangle(n):
     pascal = [[1]]
 
     while n > 1:
-        curr_row = [1]
         prev_row = pascal[-1]
-        for j in range(len(prev_row) - 1):
-            curr_row += [
-                prev_row[j] + prev_row[j + 1]
-            ]
-        curr_row += [1]
+
+        curr_row = [1] + [
+            prev_row[j] + prev_row[j + 1]
+            for j in range(len(prev_row) - 1)
+        ] + [1]
+
         pascal += [curr_row]
         n -= 1
 
