@@ -1,12 +1,14 @@
 #include "regex.h"
 
-
+/**
+ * regex_match - returns true or false whether a string matches
+ * a pattern
+ * @str: string
+ * @pattern: regex pattern
+ * Return: 0 | 1
+ */
 int regex_match(char const *str, char const *pattern)
 {
-	/* '.' matches one single character 
-	 * '*' matches either 0 or no character at all
-	 */
-	/* Check if S1 or S2 is over */
 	if (*str == '\0' || *pattern == '\0')
 	{
 		if (*str == '\0' && *pattern == '*' && *(pattern + 1) == '\0')
