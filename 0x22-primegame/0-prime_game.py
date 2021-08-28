@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """Prime Numbers"""
 
-cache = {}
-
 
 def set_generator(number):
     """Generates a set from {1...num}"""
@@ -14,17 +12,18 @@ def set_generator(number):
 def play_game(playset):
     """Plays a game eliminating all of the prime numbers"""
 
+    cache = {}
+
     def is_prime(number):
         """Returns whether a given number is a prime"""
         if number in cache:
             return cache[number]
 
-        for num in range(2, number):
-            if number % num == 0:
-                cache[number] = False
-                return cache[number]
+        for i in range(2, (number // 2) + 1):
+            if number % i == 0:
+                break
 
-        cache[number] = True
+        cache[number] = number % i == 0
         return cache[number]
 
     playcount = 0
@@ -43,7 +42,7 @@ def isWinner(x, nums):
         'False': 0
     }
 
-    if not x or not len(nums):
+    if x <= 0 or len(nums) <= 0:
         return None
 
     for num in nums:
