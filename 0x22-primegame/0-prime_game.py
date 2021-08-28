@@ -49,7 +49,7 @@ def isWinner(x, nums):
     for num in nums:
         playset = set_generator(num)
         win_count[
-            str(play_game(playset, num))
+            str(play_game(playset))
         ] += 1
 
     return (
