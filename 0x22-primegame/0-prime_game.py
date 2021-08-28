@@ -19,7 +19,8 @@ def play_game(playset):
         if number in cache:
             return cache[number]
 
-        for i in range(2, (number // 2) + 1):
+        i = 2
+        while i < (number // 2) + 1:
             if number % i == 0:
                 break
 
